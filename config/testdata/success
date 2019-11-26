@@ -1,0 +1,5 @@
+dynamic-plugin {
+    conf testdata/dynamic-conf
+    p1 p1.so
+    p2 p2.so
+}
