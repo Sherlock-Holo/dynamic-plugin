@@ -74,7 +74,7 @@ func (c *config) loadPlugins() error {
 
 		p, err := plugin.Open(path)
 		if err != nil {
-			return errors.Wrapf(err, "open plugin %s failed", name)
+			return errors.Wrapf(err, "open plugin %s failed", path)
 		}
 
 		symbol, err := p.Lookup("Setup")
