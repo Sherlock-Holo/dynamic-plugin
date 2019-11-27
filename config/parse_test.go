@@ -33,6 +33,7 @@ func TestParse(t *testing.T) {
 			name: "success",
 			args: args{c: caddy.NewTestController("dns", string(successData))},
 			wantCfg: config{
+				dynamicConfigPath:    "testdata/dynamic-conf",
 				dynamicConfigContent: bytes.NewReader(dynamicConf),
 				key:                  "",
 				names:                []string{"p1", "p2"},
@@ -52,7 +53,7 @@ func TestParse(t *testing.T) {
 				return
 			}
 			if !reflect.DeepEqual(gotCfg, tt.wantCfg) {
-				t.Errorf("parse() gotCfg = %v, want %v", gotCfg, tt.wantCfg)
+				t.Errorf("parse() gotCfg = %v, \nwant %v", gotCfg, tt.wantCfg)
 			}
 		})
 	}
