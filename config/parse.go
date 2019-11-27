@@ -3,6 +3,7 @@ package config
 import (
 	"bytes"
 	"io/ioutil"
+	"strings"
 
 	"github.com/caddyserver/caddy"
 	"github.com/coredns/coredns/plugin"
@@ -12,7 +13,7 @@ import (
 // and then get all dynamic plugin names and there paths.
 func parse(c *caddy.Controller) (cfg config, err error) {
 	cfg.paths = make(map[string]string)
-	cfg.key = c.Key
+	cfg.key = strings.ReplaceAll(c.Key, "dns://", "")
 
 	var count int
 

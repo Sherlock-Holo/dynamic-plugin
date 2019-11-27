@@ -96,7 +96,7 @@ func (c *config) loadPlugins() error {
 func (c *config) parseDynamicConfig() error {
 	c.controllers = make(map[string]*caddy.Controller, len(c.names))
 
-	blocks, err := caddyfile.Parse(c.dynamicConfigPath, c.dynamicConfigContent, nil)
+	blocks, err := caddyfile.Parse(c.dynamicConfigPath, c.dynamicConfigContent, c.names)
 	if err != nil {
 		return errors.Wrapf(err, "parse %s failed", c.dynamicConfigPath)
 	}
