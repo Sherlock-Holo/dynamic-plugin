@@ -32,7 +32,7 @@ func NewConfig(c *caddy.Controller) (*config, error) {
 		return nil, errors.WithMessage(err, "parse config failed")
 	}
 
-	if err := cfg.loadDynamicConfig(); err != nil {
+	if err := cfg.parseDynamicConfig(); err != nil {
 		return nil, errors.WithMessage(err, "load dynamic config failed")
 	}
 
@@ -93,10 +93,10 @@ func (c *config) loadPlugins() error {
 	return nil
 }
 
-func (c *config) loadDynamicConfig() error {
+func (c *config) parseDynamicConfig() error {
 	c.controllers = make(map[string]*caddy.Controller, len(c.names))
 
-	blocks, err := caddyfile.Parse(c.dynamicConfigPath, c.dynamicConfigContent, caddy.ValidDirectives("dns"))
+	blocks, err := caddyfile.Parse(c.dynamicConfigPath, c.dynamicConfigContent, nil)
 	if err != nil {
 		return errors.Wrapf(err, "parse %s failed", c.dynamicConfigPath)
 	}
