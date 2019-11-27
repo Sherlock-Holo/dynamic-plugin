@@ -5,7 +5,7 @@ import (
 	"plugin"
 	"strings"
 
-	"github.com/Sherlock-Holo/dynamic-plugin/config/setup"
+	"github.com/Sherlock-Holo/dynamic-plugin/setup"
 	"github.com/Sherlock-Holo/errors"
 	"github.com/caddyserver/caddy"
 	"github.com/caddyserver/caddy/caddyfile"

@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/Sherlock-Holo/dynamic-plugin/config/setup"
+	"github.com/Sherlock-Holo/dynamic-plugin/setup"
 	"github.com/caddyserver/caddy"
 )
 
